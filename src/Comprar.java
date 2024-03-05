@@ -14,6 +14,7 @@ public class Comprar extends JFrame {
     private JPanel panelComprar;
     private JButton ingresarProductoAlCarritoButton;
     private JButton finalizarCompraButton;
+    private JTextArea carrito;
 
     /**
      * Constructor de la clase Comprar.
@@ -84,6 +85,7 @@ public class Comprar extends JFrame {
                             int filasActualizadas = preparedStatement.executeUpdate();
                             if (filasActualizadas > 0) {
                                 JOptionPane.showMessageDialog(Comprar.this, "Producto agregado al carrito", "Información", JOptionPane.INFORMATION_MESSAGE);
+                                carrito.append(nombreProducto + " - Cantidad: " + cantidad + "\n");
                                 limpiarCampos();
                             } else {
                                 JOptionPane.showMessageDialog(Comprar.this, "Producto no agregado al carrito", "Error", JOptionPane.ERROR_MESSAGE);
@@ -177,4 +179,6 @@ public class Comprar extends JFrame {
     private void limpiarCampos() {
         cantidadTxt.setText("");
     }
+
+
 }
